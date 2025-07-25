@@ -40,25 +40,50 @@ function draw() {
 
   // Ensure at least one hand is detected
   if (hands.length > 0) {
-    let hand = hands[0];
-    let index = hand.index_finger_tip;
-    let thumb = hand.thumb_tip;
+    let firsthand = hands[0];
+
+    if (hands.length > 1) {
+      let secondHand = hands[1];
+
+      let secondIndex = secondHand.index_finger_tip;
+      let secondThumb = secondHand.thumb_tip;
+
+      let x2 = (secondIndex.x + secondThumb.x) * 0.5;
+      let y2 = (secondIndex.y + secondThumb.y) * 0.5
+
+      let d2 = dist(secondIndex.x, secondIndex.y, secondThumb.x, secondThumb.y);
+      if (d2 < 20) {
+        painting.stroke(255, 0, 0);
+        painting.strokeWeight(8);
+        painting.line(px2, py2, x2, y2);
+      }
+      px2 = x2;
+      py2 = y2;
+    }
+    
+    let firstIndex = firsthand.index_finger_tip;
+    let firstThumb = firsthand.thumb_tip;
+
+    
 
     // Compute midpoint between index finger and thumb
-    let x = (index.x + thumb.x) * 0.5;
-    let y = (index.y + thumb.y) * 0.5;
+    let x1 = (firstIndex.x + firstThumb.x) * 0.5;
+    let y1 = (firstIndex.y + firstThumb.y) * 0.5;
+
+    
 
     // Draw only if fingers are close together
-    let d = dist(index.x, index.y, thumb.x, thumb.y);
-    if (d < 20) {
+    let d1 = dist(firstIndex.x, firstIndex.y, firstThumb.x, firstThumb.y);
+    if (d1 < 20) {
       painting.stroke(255, 255, 0);
       painting.strokeWeight(8);
-      painting.line(px, py, x, y);
+      painting.line(px1, py1, x1, y1);
     }
+    
 
     // Update previous position
-    px = x;
-    py = y;
+    px1 = x1;
+    py1 = y1;
   }
 
   // Overlay painting on top of the video
