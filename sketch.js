@@ -5,15 +5,16 @@ let painting;
 let px = 0;
 let py = 0;
 
+
 function setup() {
-  createCanvas(640, 480);
-  painting = createGraphics(640, 480);
+  createCanvas(1280, 960);
+  painting = createGraphics(1280, 960);
   painting.clear();
 
   video = createCapture({
     video: {
-      width: 320,
-      height: 240
+      width: 640,
+      height: 480
     }
   });
   video.hide();
@@ -22,6 +23,7 @@ function setup() {
     console.log('Model ready');
   });
   handPose.on("predict", gotHands);
+  
 }
 
 function gotHands(results) {
