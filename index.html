@@ -7,7 +7,63 @@
     <meta charset="utf-8" />
   </head>
   <body>
-    <main></main>
-    <script src="sketch.js"></script>
-  </body>
+    <div class="container">
+        <h1>✋ Hand Drawing Canvas</h1>
+        <div class="controls">
+            <div class="control-group">
+                <span class="control-label">Colors:</span>
+                <div class="color-palette">
+                    <div class="color-option active" style="background-color: #ffff00;" data-color="255,255,0"></div>
+                    <div class="color-option" style="background-color: #ff0000;" data-color="255,0,0"></div>
+                    <div class="color-option" style="background-color: #00ff00;" data-color="0,255,0"></div>
+                    <div class="color-option" style="background-color: #0000ff;" data-color="0,0,255"></div>
+                    <div class="color-option" style="background-color: #ff00ff;" data-color="255,0,255"></div>
+                    <div class="color-option" style="background-color: #00ffff;" data-color="0,255,255"></div>
+                    <div class="color-option" style="background-color: #ffffff;" data-color="255,255,255"></div>
+                    <div class="color-option" style="background-color: #000000;" data-color="0,0,0"></div>
+                </div>
+            </div>
+            
+            <button class="btn clear" onclick="clearCanvas()">
+                🗑️ Clear Canvas
+            </button>
+            
+            <button class="btn download" onclick="downloadPainting()">
+                💾 Download
+            </button>
+        </div>
+        
+        <main></main>
+        <script src="sketch.js"></script>
+        
+        <div class="tutorial">
+            <h2>How to Use</h2>
+            <div class="instructions">
+                <div class="instruction-card">
+                    <span class="hand-icon">✏️</span>
+                    <div class="instruction-title">Primary Hand</div>
+                    <div class="instruction-text">Use your first detected hand to draw yellow strokes on the canvas. Pinch to draw, and release to drop the pen.</div>
+                </div>
+                <div class="instruction-card">
+                    <span class="hand-icon">🖌️</span>
+                    <div class="instruction-title">Brush Control</div>
+                    <div class="instruction-text">Use your second hand to dynamically adjust the brush size in real-time by pinching.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <div class="status-item">
+                <div class="status-dot"></div>
+                <span>Camera Active</span>
+            </div>
+            <div class="status-item">
+                <span>ML5.js Hand Tracking</span>
+            </div>
+            <div class="status-item">
+                <span>Ready to Draw</span>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
